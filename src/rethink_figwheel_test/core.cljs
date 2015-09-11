@@ -1,5 +1,5 @@
 (ns ^:figwheel-always rethink-figwheel-test.core
-    (:require))
+  (:require [rethinkdb.query :as r]))
 
 (enable-console-print!)
 
@@ -9,10 +9,13 @@
 
 (defonce app-state (atom {:text "Hello world!"}))
 
+(println (r/line []))
+
 
 (defn on-js-reload []
   ;; optionally touch your app-state to force rerendering depending on
   ;; your application
   ;; (swap! app-state update-in [:__figwheel_counter] inc)
-)
+  (r/table :testing)
+  )
 
